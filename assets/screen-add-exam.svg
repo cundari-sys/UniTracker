@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 620" width="300" height="620" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12121c"/><stop offset="1" stop-color="#07070c"/></linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F0FF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="scr"><rect x="4" y="4" width="292" height="612" rx="46"/></clipPath>
+  </defs>
+  <rect x="4" y="4" width="292" height="612" rx="46" fill="url(#bg)"/>
+  <g clip-path="url(#scr)">
+    <text x="24" y="78" fill="#fff" font-size="26" font-weight="700">Storico Esami</text>
+    <rect x="24" y="130" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+    <rect x="24" y="204" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+    <rect x="24" y="278" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+
+    <rect x="4" y="4" width="292" height="612" fill="#000" opacity="0">
+      <animate attributeName="opacity" values="0;0.6;0.6;0" keyTimes="0;0.2;0.85;1" dur="7s" repeatCount="indefinite"/>
+    </rect>
+
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 620;0 0;0 0;0 620" keyTimes="0;0.2;0.85;1" dur="7s" repeatCount="indefinite"/>
+      <rect x="4" y="190" width="292" height="460" rx="30" fill="#1c1c2b" stroke="#2c2c42"/>
+      <rect x="125" y="200" width="50" height="5" rx="2.5" fill="#55556e"/>
+      <text x="150" y="238" fill="#fff" font-size="18" font-weight="700" text-anchor="middle">Nuovo Esame</text>
+
+      <rect x="24" y="258" width="252" height="48" rx="12" fill="#262638"/>
+      <text x="40" y="287" fill="#fff" font-size="14">Algoritmi e Strutture Dati</text>
+
+      <rect x="24" y="316" width="122" height="48" rx="12" fill="#262638"/>
+      <text x="40" y="333" fill="#8b8fa3" font-size="9" letter-spacing="1">VOTO</text>
+      <text x="40" y="354" fill="#00F0FF" font-size="16" font-weight="700">30</text>
+      <rect x="154" y="316" width="122" height="48" rx="12" fill="#262638"/>
+      <text x="170" y="333" fill="#8b8fa3" font-size="9" letter-spacing="1">CFU</text>
+      <text x="170" y="354" fill="#8B5CF6" font-size="16" font-weight="700">9</text>
+
+      <rect x="24" y="374" width="252" height="52" rx="12" fill="#262638"/>
+      <text x="40" y="405" fill="#fff" font-size="14">Lode</text>
+      <rect x="216" y="386" width="46" height="28" rx="14" fill="#3a3a4c">
+        <animate attributeName="fill" values="#3a3a4c;#3a3a4c;#34C759;#34C759;#3a3a4c" keyTimes="0;0.4;0.5;0.85;1" dur="7s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="230" cy="400" r="11" fill="#fff">
+        <animate attributeName="cx" values="230;230;248;248;230" keyTimes="0;0.4;0.5;0.85;1" dur="7s" repeatCount="indefinite"/>
+      </circle>
+
+      <rect x="24" y="446" width="252" height="52" rx="26" fill="url(#neon)" filter="url(#glow)"/>
+      <text x="150" y="478" fill="#05050a" font-size="16" font-weight="700" text-anchor="middle">Salva Esame</text>
+    </g>
+  </g>
+  <rect x="4" y="4" width="292" height="612" rx="46" fill="none" stroke="url(#neon)" stroke-width="3"/>
+  <rect x="110" y="16" width="80" height="22" rx="11" fill="#000"/>
+</svg>

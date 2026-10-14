@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 620" width="300" height="620" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12121c"/><stop offset="1" stop-color="#07070c"/></linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F0FF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="r1"><rect x="24" y="150" width="252" height="62" rx="16"/></clipPath>
+    <clipPath id="r2"><rect x="24" y="224" width="252" height="62" rx="16"/></clipPath>
+    <clipPath id="r3"><rect x="24" y="298" width="252" height="62" rx="16"/></clipPath>
+    <clipPath id="r4"><rect x="24" y="372" width="252" height="62" rx="16"/></clipPath>
+  </defs>
+  <rect x="4" y="4" width="292" height="612" rx="46" fill="url(#bg)" stroke="url(#neon)" stroke-width="3"/>
+  <rect x="110" y="16" width="80" height="22" rx="11" fill="#000"/>
+
+  <text x="24" y="78" fill="#fff" font-size="26" font-weight="700">Storico Esami</text>
+  <text x="24" y="132" fill="#00F0FF" font-size="11" font-weight="700" letter-spacing="2">ANNO ACCADEMICO 2025/26</text>
+
+  <!-- Row 1: swipe left → delete -->
+  <g clip-path="url(#r1)">
+    <rect x="24" y="150" width="252" height="62" fill="#FF3B30"/>
+    <text x="244" y="186" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Elimina</text>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0;-80 0;-80 0;0 0;0 0" keyTimes="0;0.15;0.4;0.5;1" dur="8s" repeatCount="indefinite"/>
+      <rect x="24" y="150" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+      <text x="40" y="176" fill="#fff" font-size="14" font-weight="600">Analisi Matematica 1</text>
+      <text x="40" y="196" fill="#8b8fa3" font-size="11">12 CFU</text>
+      <rect x="222" y="168" width="40" height="26" rx="13" fill="#2a2410" stroke="#FFD60A" filter="url(#glow)"/>
+      <text x="242" y="186" fill="#FFD60A" font-size="12" font-weight="700" text-anchor="middle">30L</text>
+    </g>
+  </g>
+
+  <!-- Row 2: swipe right → edit -->
+  <g clip-path="url(#r2)">
+    <rect x="24" y="224" width="252" height="62" fill="#0A84FF"/>
+    <text x="62" y="260" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Modifica</text>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 0;80 0;80 0;0 0" keyTimes="0;0.5;0.65;0.9;1" dur="8s" repeatCount="indefinite"/>
+      <rect x="24" y="224" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+      <text x="40" y="250" fill="#fff" font-size="14" font-weight="600">Fisica Generale</text>
+      <text x="40" y="270" fill="#8b8fa3" font-size="11">9 CFU</text>
+      <rect x="226" y="242" width="36" height="26" rx="13" fill="#0c2530" stroke="#00F0FF"/>
+      <text x="244" y="260" fill="#00F0FF" font-size="12" font-weight="700" text-anchor="middle">27</text>
+    </g>
+  </g>
+
+  <g clip-path="url(#r3)">
+    <rect x="24" y="298" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+    <text x="40" y="324" fill="#fff" font-size="14" font-weight="600">Fondamenti di Informatica</text>
+    <text x="40" y="344" fill="#8b8fa3" font-size="11">12 CFU</text>
+    <rect x="226" y="316" width="36" height="26" rx="13" fill="#1e1236" stroke="#8B5CF6"/>
+    <text x="244" y="334" fill="#8B5CF6" font-size="12" font-weight="700" text-anchor="middle">28</text>
+  </g>
+  <g clip-path="url(#r4)">
+    <rect x="24" y="372" width="252" height="62" rx="16" fill="#171724" stroke="#26263a"/>
+    <text x="40" y="398" fill="#fff" font-size="14" font-weight="600">Geometria e Algebra</text>
+    <text x="40" y="418" fill="#8b8fa3" font-size="11">6 CFU</text>
+    <rect x="226" y="390" width="36" height="26" rx="13" fill="#0e2a16" stroke="#39FF14"/>
+    <text x="244" y="408" fill="#39FF14" font-size="12" font-weight="700" text-anchor="middle">25</text>
+  </g>
+
+  <text x="150" y="480" fill="#8b8fa3" font-size="11" text-anchor="middle">← elimina   ·   modifica →</text>
+  <rect x="105" y="598" width="90" height="5" rx="2.5" fill="#fff" opacity=".4"/>
+</svg>

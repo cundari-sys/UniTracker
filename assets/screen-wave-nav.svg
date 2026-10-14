@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 620" width="300" height="620" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12121c"/><stop offset="1" stop-color="#07070c"/></linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F0FF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="28"/></filter>
+    <clipPath id="scr"><rect x="4" y="4" width="292" height="612" rx="46"/></clipPath>
+  </defs>
+  <rect x="4" y="4" width="292" height="612" rx="46" fill="url(#bg)"/>
+  <g clip-path="url(#scr)">
+    <text x="24" y="78" fill="#fff" font-size="26" font-weight="700">Wave Navigation</text>
+    <text x="24" y="98" fill="#8b8fa3" font-size="12">Glassmorphism · blur · notch dinamico</text>
+
+    <rect x="24" y="130" width="252" height="90" rx="20" fill="#171724" stroke="#26263a"/>
+    <rect x="24" y="234" width="252" height="90" rx="20" fill="#171724" stroke="#26263a"/>
+    <rect x="24" y="338" width="252" height="90" rx="20" fill="#171724" stroke="#26263a"/>
+
+    <!-- ambient glow that tints the whole scene -->
+    <ellipse cx="57" cy="540" rx="120" ry="90" fill="#00F0FF" opacity=".35" filter="url(#blur)">
+      <animate attributeName="cx" values="57;57;119;119;181;181;243;243;57" keyTimes="0;0.2;0.25;0.45;0.5;0.7;0.75;0.95;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#00F0FF;#00F0FF;#8B5CF6;#8B5CF6;#39FF14;#39FF14;#FF9F0A;#FF9F0A;#00F0FF" keyTimes="0;0.2;0.25;0.45;0.5;0.7;0.75;0.95;1" dur="8s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- glass bar -->
+    <rect x="24" y="520" width="252" height="64" rx="32" fill="#ffffff" fill-opacity=".07" stroke="#ffffff" stroke-opacity=".18"/>
+
+    <!-- notch -->
+    <circle cx="57" cy="520" r="32" fill="#0b0b11">
+      <animate attributeName="cx" values="57;57;119;119;181;181;243;243;57" keyTimes="0;0.2;0.25;0.45;0.5;0.7;0.75;0.95;1" dur="8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- inactive icons -->
+    <g stroke="#8b8fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <g transform="translate(57 556)"><path d="M-8 2L0-6L8 2M-5 0V8H5V0"/></g>
+      <g transform="translate(119 556)"><path d="M-8 8V0M0 8V-6M8 8V3"/></g>
+      <g transform="translate(181 556)"><path d="M-8-5H8M-8 0H8M-8 5H8"/></g>
+      <g transform="translate(243 556)"><circle r="7"/><path d="M-3 0H3M0-3V3"/></g>
+    </g>
+
+    <!-- floating active bubble -->
+    <circle cx="57" cy="506" r="24" fill="#00F0FF" filter="url(#glow)">
+      <animate attributeName="cx" values="57;57;119;119;181;181;243;243;57" keyTimes="0;0.2;0.25;0.45;0.5;0.7;0.75;0.95;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#00F0FF;#00F0FF;#8B5CF6;#8B5CF6;#39FF14;#39FF14;#FF9F0A;#FF9F0A;#00F0FF" keyTimes="0;0.2;0.25;0.45;0.5;0.7;0.75;0.95;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="506;500;506;500;506" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="57" cy="506" r="7" fill="none" stroke="#0b0b11" stroke-width="3">
+      <animate attributeName="cx" values="57;57;119;119;181;181;243;243;57" keyTimes="0;0.2;0.25;0.45;0.5;0.7;0.75;0.95;1" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="506;500;506;500;506" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <rect x="4" y="4" width="292" height="612" rx="46" fill="none" stroke="url(#neon)" stroke-width="3"/>
+  <rect x="110" y="16" width="80" height="22" rx="11" fill="#000"/>
+  <rect x="105" y="598" width="90" height="5" rx="2.5" fill="#fff" opacity=".4"/>
+</svg>
