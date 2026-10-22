@@ -1,5 +1,4 @@
 class Constants {
-  // Costruttore privato: impedisce di creare oggetti con Constants()
   Constants._();
 
   static const String appName = 'UniTrack';
