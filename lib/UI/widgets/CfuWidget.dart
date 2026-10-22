@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:unitrack/model/utility/Constants.dart';
-import '../../model/utility/constants.dart';
 
 class CfuCard extends StatefulWidget {
   final int cfu; 
