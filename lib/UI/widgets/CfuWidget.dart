@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CfuCard extends StatelessWidget {
+class CfuCard extends StatefulWidget {
   final int cfu; 
   final double media;
   final int proiezione;
@@ -11,6 +11,42 @@ class CfuCard extends StatelessWidget {
     required this.media,
     required this.proiezione,
   });
+
+  @override
+  State<CfuCard> createState() => _CfuCardState();
+}
+
+class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    
+    // 1. Inizializziamo il controller dell'animazione (durata: 1.2 secondi)
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+
+    // 2. Calcoliamo la percentuale finale (es. 45 / 180 = 0.25)
+    double targetValue = widget.cfu / 180;
+
+    // 3. Creiamo la transizione da 0.0 al valore dei CFU
+    _animation = Tween<double>(begin: 0.0, end: targetValue).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
+    );
+
+    // 4. Avviamo l'animazione appena la card viene caricata
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose(); // Pulizia del controller alla chiusura
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +85,22 @@ class CfuCard extends StatelessWidget {
                     SizedBox(
                       width: 95,
                       height: 95,
-                      child: CircularProgressIndicator(
-                        value: cfu / 180, 
-                        strokeWidth: 9,
-                        backgroundColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1), 
-                        color: const Color(0xFF00E5FF),
-                        strokeCap: StrokeCap.round, 
+                      // AnimatedBuilder ascolta l'animazione e ridisegna il cerchio fluidamente
+                      child: AnimatedBuilder(
+                        animation: _animation,
+                        builder: (context, child) {
+                          return CircularProgressIndicator(
+                            value: _animation.value, 
+                            strokeWidth: 9,
+                            backgroundColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1), 
+                            color: const Color(0xFF00E5FF),
+                            strokeCap: StrokeCap.round, 
+                          );
+                        },
                       ),
                     ),
                     Text(
-                      cfu.toString(),
+                      widget.cfu.toString(),
                       style: TextStyle(
                         fontSize: 26, 
                         fontWeight: FontWeight.bold, 
@@ -78,21 +120,21 @@ class CfuCard extends StatelessWidget {
                 _buildMetricItem(
                   context, 
                   title: 'CFU', 
-                  value: '$cfu/180',
+                  value: '${widget.cfu}/180',
                   icon: Icons.school_outlined,
                 ),
                 const SizedBox(width: 32),
                 _buildMetricItem(
                   context, 
                   title: 'Media', 
-                  value: media.toStringAsFixed(2),
+                  value: widget.media.toStringAsFixed(2),
                   icon: Icons.star_outline_rounded,
                 ),
                 const SizedBox(width: 32),
                 _buildMetricItem(
                   context, 
                   title: 'Proiezione', 
-                  value: proiezione.toString(),
+                  value: widget.proiezione.toString(),
                   icon: Icons.trending_up_rounded,
                 ),
               ],
