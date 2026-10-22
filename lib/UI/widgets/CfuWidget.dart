@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:unitrack/model/utility/Constants.dart';
+import '../../model/utility/constants.dart';
 
 class CfuCard extends StatefulWidget {
   final int cfu; 
@@ -29,7 +31,7 @@ class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
       duration: const Duration(milliseconds: 1200),
     );
 
-    double targetValue = widget.cfu / 180;
+    double targetValue = widget.cfu / Constants.maxCfu;
 
     _animation = Tween<double>(begin: 0.0, end: targetValue).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
