@@ -24,27 +24,23 @@ class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     
-    // 1. Inizializziamo il controller dell'animazione (durata: 1.2 secondi)
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1200),
     );
 
-    // 2. Calcoliamo la percentuale finale (es. 45 / 180 = 0.25)
     double targetValue = widget.cfu / 180;
 
-    // 3. Creiamo la transizione da 0.0 al valore dei CFU
     _animation = Tween<double>(begin: 0.0, end: targetValue).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
     );
 
-    // 4. Avviamo l'animazione appena la card viene caricata
     _controller.forward();
   }
 
   @override
   void dispose() {
-    _controller.dispose(); // Pulizia del controller alla chiusura
+    _controller.dispose(); 
     super.dispose();
   }
 
@@ -85,7 +81,6 @@ class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
                     SizedBox(
                       width: 95,
                       height: 95,
-                      // AnimatedBuilder ascolta l'animazione e ridisegna il cerchio fluidamente
                       child: AnimatedBuilder(
                         animation: _animation,
                         builder: (context, child) {
