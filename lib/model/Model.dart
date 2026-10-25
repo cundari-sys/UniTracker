@@ -9,15 +9,28 @@ class Model extends ChangeNotifier {
   static Model get instance => _instance;
 
   final List<Exam> _esamiFittizi = [
-    Exam(id: '1', nome: 'Sistemi Operativi', cfu: 9, superato: false),
-    Exam(id: '2', nome: 'Metodi e Ricerca Operativa', cfu: 9, superato: false),
-    Exam(id: '3', nome: 'Basi di Dati (Mod. 1)', cfu: 6, superato: false),
-    Exam(id: '4', nome: 'Programmazione Mobile', cfu: 6, superato: false),
-    Exam(id: '5', nome: 'Analisi 1', cfu: 9, voto: 26, data: DateTime(2025, 2, 10), superato: true, lode: false),
-    Exam(id: '6', nome: 'Fondamenti di Informatica', cfu: 12, voto: 30, superato: true, lode: true), 
+    // 1° Anno
+    Exam(id: '5', nome: 'Analisi 1', cfu: 9, voto: 26, data: DateTime(2025, 2, 10), superato: true, lode: false, anno: 1),
+    Exam(id: '6', nome: 'Fondamenti di Informatica', cfu: 12, voto: 30, superato: true, lode: true, anno: 1), 
+    
+    // 2° Anno
+    Exam(id: '1', nome: 'Sistemi Operativi', cfu: 9, superato: false, anno: 2),
+    Exam(id: '2', nome: 'Metodi e Ricerca Operativa', cfu: 9, superato: false, anno: 2),
+    Exam(id: '3', nome: 'Basi di Dati (Mod. 1)', cfu: 6, superato: false, anno: 2),
+    
+    // 3° Anno
+    Exam(id: '4', nome: 'Programmazione Mobile', cfu: 6, superato: false, anno: 3),
   ];
 
   List<Exam> get esami => _esamiFittizi;
+
+  List<Exam> get esamiPrimoAnno => _esamiFittizi.where((e) => e.anno == 1).toList();
+  List<Exam> get esamiSecondoAnno => _esamiFittizi.where((e) => e.anno == 2).toList();
+  List<Exam> get esamiTerzoAnno => _esamiFittizi.where((e) => e.anno == 3).toList();
+
+  List<Exam> esamiPerAnno(int anno) {
+    return _esamiFittizi.where((e) => e.anno == anno).toList();
+  }
 
   int get cfuTotali {
     return _esamiFittizi.where((e) => e.superato).fold(0, (s, e) => s + e.cfu);
