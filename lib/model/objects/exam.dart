@@ -6,7 +6,7 @@ class Exam {
   final int cfu;
   DateTime? data;
   final bool superato;
-  final int anno; // <--- Nuovo campo (es. 1, 2 o 3)
+  final int anno; 
 
   Exam({
     required this.id,
