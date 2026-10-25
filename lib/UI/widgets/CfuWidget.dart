@@ -1,41 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:unitrack/model/utility/Constants.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:unitrack/model/Model.dart';
+import 'package:unitrack/model/utility/constants.dart';
 
-class CfuCard extends StatefulWidget {
-  final int cfu; 
-  final double media;
-  final int proiezione;
-  
-  const CfuCard({
-    super.key,
-    required this.cfu,
-    required this.media,
-    required this.proiezione,
-  });
+class CfuCard extends ConsumerStatefulWidget {
+  const CfuCard({super.key});
 
   @override
-  State<CfuCard> createState() => _CfuCardState();
+  ConsumerState<CfuCard> createState() => _CfuCardState();
 }
 
-class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
+class _CfuCardState extends ConsumerState<CfuCard> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1200),
     );
-
-    double targetValue = widget.cfu / Constants.maxCfu;
-
-    _animation = Tween<double>(begin: 0.0, end: targetValue).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
-    );
-
     _controller.forward();
   }
 
@@ -47,6 +32,14 @@ class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final model = ref.watch(modelProvider);
+    
+    double targetValue = model.cfuTotali / Constants.maxCfu;
+
+    _animation = Tween<double>(begin: 0.0, end: targetValue).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
+    );
+
     return Center( 
       child: Container(
         constraints: const BoxConstraints(maxWidth: 600), 
@@ -96,7 +89,7 @@ class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     Text(
-                      widget.cfu.toString(),
+                      model.cfuTotali.toString(), // Letto dal Model
                       style: TextStyle(
                         fontSize: 26, 
                         fontWeight: FontWeight.bold, 
@@ -116,21 +109,21 @@ class _CfuCardState extends State<CfuCard> with SingleTickerProviderStateMixin {
                 _buildMetricItem(
                   context, 
                   title: 'CFU', 
-                  value: '${widget.cfu}/180',
+                  value: '${model.cfuTotali}/${Constants.maxCfu}', 
                   icon: Icons.school_outlined,
                 ),
                 const SizedBox(width: 32),
                 _buildMetricItem(
                   context, 
                   title: 'Media', 
-                  value: widget.media.toStringAsFixed(2),
+                  value: model.mediaPonderata.toStringAsFixed(2), 
                   icon: Icons.star_outline_rounded,
                 ),
                 const SizedBox(width: 32),
                 _buildMetricItem(
                   context, 
                   title: 'Proiezione', 
-                  value: widget.proiezione.toString(),
+                  value: model.getProiezioneLaurea().toStringAsFixed(2), 
                   icon: Icons.trending_up_rounded,
                 ),
               ],

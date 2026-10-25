@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
                 Center(
                   child: Column(
                     children: [
-                      const CfuCard(cfu: 45, media: 24.0, proiezione: 100), 
+                      const CfuCard(), 
                       const SizedBox(height: 50),
                       const AddExamBt(),
                       const SizedBox(height: 30),

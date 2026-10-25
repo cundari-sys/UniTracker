@@ -5,7 +5,6 @@ import 'package:unitrack/UI/Theme/light_theme.dart';
 import 'package:unitrack/model/utility/Constants.dart';
 import 'pages/layout.dart';
 import 'package:unitrack/UI/Theme/themeModeNotifier.dart';
-import '../model/utility/constants.dart' hide Constants;
 
 class App extends ConsumerWidget {
   const App({super.key});
