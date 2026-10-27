@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unitrack/UI/Theme/themeModeNotifier.dart';
+import 'package:unitrack/model/managers/shared_preferences/themeModeNotifier.dart';
 
 class AddExamBt extends ConsumerWidget {
   const AddExamBt({super.key});

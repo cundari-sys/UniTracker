@@ -89,7 +89,7 @@ class _CfuCardState extends ConsumerState<CfuCard> with SingleTickerProviderStat
                       ),
                     ),
                     Text(
-                      model.cfuTotali.toString(), // Letto dal Model
+                      model.cfuTotali.toString(), 
                       style: TextStyle(
                         fontSize: 26, 
                         fontWeight: FontWeight.bold, 

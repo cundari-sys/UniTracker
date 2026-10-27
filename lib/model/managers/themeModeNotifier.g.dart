@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'themeModeNotifier.dart';
+part of 'shared_preferences/themeModeNotifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator

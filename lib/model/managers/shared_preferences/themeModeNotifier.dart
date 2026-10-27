@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-part 'themeModeNotifier.g.dart';
+part '../themeModeNotifier.g.dart';
 
 @riverpod
 class ThemeModeNotifier extends _$ThemeModeNotifier {
