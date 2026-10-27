@@ -4,7 +4,7 @@ import 'package:unitrack/UI/Theme/dark_theme.dart';
 import 'package:unitrack/UI/Theme/light_theme.dart';
 import 'package:unitrack/model/utility/Constants.dart';
 import 'pages/layout.dart';
-import 'package:unitrack/UI/Theme/themeModeNotifier.dart';
+import 'package:unitrack/model/managers/shared_preferences/themeModeNotifier.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
