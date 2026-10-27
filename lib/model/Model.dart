@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'objects/exam.dart';
+import 'utility/cfu_media_proiezione.dart'; 
+import 'package:unitrack/model/managers/shared_preferences/UserName.dart';
 
 class Model extends ChangeNotifier {
   static final Model _instance = Model._internal();
   factory Model() => _instance;
-  Model._internal();
+  Model._internal() {
+    caricaNome();
+  }
   static Model get instance => _instance;
+
+  String? _name;
+
+  String? get nomestudente => _name;
+  bool get isNameEmpty => _name == null || _name!.isEmpty;
 
   final List<Exam> _esamiFittizi = [
     // 1° Anno
@@ -32,33 +41,28 @@ class Model extends ChangeNotifier {
     return _esamiFittizi.where((e) => e.anno == anno).toList();
   }
 
+  Future<void> caricaNome() async{
+   _name =  await Username.instance.getNome();
+   notifyListeners();
+  }
+
+  Future<void> setNome(String value) async{
+    if(value.isNotEmpty){
+         await Username.instance.setNome(value);
+         await caricaNome();
+    }
+  }
+
   int get cfuTotali {
-    return _esamiFittizi.where((e) => e.superato).fold(0, (s, e) => s + e.cfu);
+    return AcademicCalculator.calcolaCfuTotali(_esamiFittizi);
   }
 
   double get mediaPonderata {
-    final esamiSuperati = _esamiFittizi.where((e) => e.superato).toList();
-    if (esamiSuperati.isEmpty) return 0.0;
-    
-    int sommaP = 0, sommaC = 0;
-    for (final e in esamiSuperati) {
-      sommaP += ((e.voto ?? 0) * e.cfu);
-      sommaC += e.cfu;
-    }
-    return sommaP / sommaC;
+    return AcademicCalculator.calcolaMediaPonderata(_esamiFittizi);
   }
 
   double getProiezioneLaurea() {
-    final media = mediaPonderata;
-    if (media == 0.0) return 0.0;
-    
-    double baseLaurea = (media * 11) / 3;
-
-    int numeroLodi = _esamiFittizi.where((e) => e.superato && (e.lode ?? false)).length;
-    
-    double bonusLodi = numeroLodi * 0.5;
-
-    return baseLaurea + bonusLodi;
+    return AcademicCalculator.calcolaProiezione(_esamiFittizi);
   }
 
   void eliminaEsame(String id) {
