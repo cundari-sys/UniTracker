@@ -25,14 +25,13 @@ class _NameState extends ConsumerState<Namebox> {
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-    // Positioned.fill espande l'overlay per coprire l'intero Stack della Home
     return Positioned.fill(
       child: Material(
-        color: Colors.black.withValues(alpha: 0.3), // Sfondo barriera
+        color: Colors.black.withValues(alpha: 0.3), 
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-          child: Center( // Centra il riquadro nello schermo
-            child: SingleChildScrollView( // Evita overflow se la tastiera si apre
+          child: Center( 
+            child: SingleChildScrollView( 
               padding: const EdgeInsets.all(24),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 400),
