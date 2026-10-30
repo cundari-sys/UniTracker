@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'objects/exam.dart';
 import 'utility/cfu_media_proiezione.dart'; 
 import 'package:unitrack/model/managers/shared_preferences/UserName.dart';
+import 'package:unitrack/model/Context/light.dart';
 
 class Model extends ChangeNotifier {
   static final Model _instance = Model._internal();
@@ -77,6 +78,8 @@ class Model extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  bool get isSession => Light.instance.isSession;
 } 
 
 final modelProvider = ChangeNotifierProvider<Model>((ref) {
